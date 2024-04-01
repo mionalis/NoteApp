@@ -1,6 +1,6 @@
 ﻿namespace NoteAppUI
 {
-	partial class ListboxBar
+	partial class ListboxUserControl
 	{
 		/// <summary> 
 		/// Обязательная переменная конструктора.
@@ -47,24 +47,27 @@
 			// 
 			// CategoryComboBox
 			// 
+			CategoryComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			CategoryComboBox.FormattingEnabled = true;
 			CategoryComboBox.Location = new Point(132, 3);
 			CategoryComboBox.Name = "CategoryComboBox";
-			CategoryComboBox.Size = new Size(222, 28);
+			CategoryComboBox.Size = new Size(165, 28);
 			CategoryComboBox.TabIndex = 1;
 			// 
 			// NotesListbox
 			// 
+			NotesListbox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			NotesListbox.FormattingEnabled = true;
 			NotesListbox.ItemHeight = 20;
 			NotesListbox.Location = new Point(3, 37);
 			NotesListbox.Name = "NotesListbox";
-			NotesListbox.Size = new Size(351, 444);
+			NotesListbox.Size = new Size(294, 464);
 			NotesListbox.TabIndex = 2;
 			// 
 			// AddNoteButton
 			// 
-			AddNoteButton.Location = new Point(3, 487);
+			AddNoteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			AddNoteButton.Location = new Point(3, 508);
 			AddNoteButton.Name = "AddNoteButton";
 			AddNoteButton.Size = new Size(94, 29);
 			AddNoteButton.TabIndex = 3;
@@ -73,7 +76,8 @@
 			// 
 			// EditNoteButton
 			// 
-			EditNoteButton.Location = new Point(103, 487);
+			EditNoteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			EditNoteButton.Location = new Point(103, 508);
 			EditNoteButton.Name = "EditNoteButton";
 			EditNoteButton.Size = new Size(94, 29);
 			EditNoteButton.TabIndex = 4;
@@ -82,14 +86,15 @@
 			// 
 			// DeleteNoteButton
 			// 
-			DeleteNoteButton.Location = new Point(203, 487);
+			DeleteNoteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			DeleteNoteButton.Location = new Point(203, 508);
 			DeleteNoteButton.Name = "DeleteNoteButton";
 			DeleteNoteButton.Size = new Size(94, 29);
 			DeleteNoteButton.TabIndex = 5;
 			DeleteNoteButton.Text = "button3";
 			DeleteNoteButton.UseVisualStyleBackColor = true;
 			// 
-			// ListboxBar
+			// ListboxUserControl
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -99,8 +104,9 @@
 			Controls.Add(NotesListbox);
 			Controls.Add(CategoryComboBox);
 			Controls.Add(ShowCategoryLabel);
-			Name = "ListboxBar";
-			Size = new Size(358, 537);
+			MinimumSize = new Size(300, 540);
+			Name = "ListboxUserControl";
+			Size = new Size(300, 540);
 			ResumeLayout(false);
 			PerformLayout();
 		}

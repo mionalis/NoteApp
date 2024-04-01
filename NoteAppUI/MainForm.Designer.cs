@@ -36,7 +36,9 @@
 			deleteNoteToolStripMenuItem = new ToolStripMenuItem();
 			helpToolStripMenuItem = new ToolStripMenuItem();
 			aboutToolStripMenuItem = new ToolStripMenuItem();
-			listboxBar1 = new ListboxBar();
+			ListboxUserControl = new ListboxUserControl();
+			NoteInfoUserControl = new NoteInfoUserControl();
+			Splitter = new Splitter();
 			MenuStrip.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -46,9 +48,10 @@
 			MenuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, helpToolStripMenuItem });
 			MenuStrip.Location = new Point(0, 0);
 			MenuStrip.Name = "MenuStrip";
-			MenuStrip.Size = new Size(898, 28);
+			MenuStrip.Size = new Size(1057, 28);
 			MenuStrip.TabIndex = 0;
 			MenuStrip.Text = "menuStrip1";
+			MenuStrip.ItemClicked += MenuStrip_ItemClicked;
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -94,19 +97,45 @@
 			aboutToolStripMenuItem.Size = new Size(133, 26);
 			aboutToolStripMenuItem.Text = "About";
 			// 
-			// listboxBar1
+			// ListboxUserControl
 			// 
-			listboxBar1.Location = new Point(12, 31);
-			listboxBar1.Name = "listboxBar1";
-			listboxBar1.Size = new Size(360, 671);
-			listboxBar1.TabIndex = 1;
+			ListboxUserControl.Dock = DockStyle.Left;
+			ListboxUserControl.Location = new Point(0, 28);
+			ListboxUserControl.Margin = new Padding(5);
+			ListboxUserControl.MinimumSize = new Size(300, 540);
+			ListboxUserControl.Name = "ListboxUserControl";
+			ListboxUserControl.Padding = new Padding(10, 0, 10, 10);
+			ListboxUserControl.Size = new Size(379, 641);
+			ListboxUserControl.TabIndex = 1;
+			ListboxUserControl.Load += listboxBar1_Load;
+			// 
+			// NoteInfoUserControl
+			// 
+			NoteInfoUserControl.Dock = DockStyle.Fill;
+			NoteInfoUserControl.Location = new Point(379, 28);
+			NoteInfoUserControl.MinimumSize = new Size(505, 565);
+			NoteInfoUserControl.Name = "NoteInfoUserControl";
+			NoteInfoUserControl.Padding = new Padding(10, 0, 10, 10);
+			NoteInfoUserControl.Size = new Size(678, 641);
+			NoteInfoUserControl.TabIndex = 2;
+			NoteInfoUserControl.Load += noteInfoUserControl1_Load;
+			// 
+			// Splitter
+			// 
+			Splitter.Location = new Point(379, 28);
+			Splitter.Name = "Splitter";
+			Splitter.Size = new Size(4, 641);
+			Splitter.TabIndex = 3;
+			Splitter.TabStop = false;
 			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(898, 567);
-			Controls.Add(listboxBar1);
+			ClientSize = new Size(1057, 669);
+			Controls.Add(Splitter);
+			Controls.Add(NoteInfoUserControl);
+			Controls.Add(ListboxUserControl);
 			Controls.Add(MenuStrip);
 			MainMenuStrip = MenuStrip;
 			Name = "MainForm";
@@ -127,6 +156,8 @@
 		private ToolStripMenuItem deleteNoteToolStripMenuItem;
 		private ToolStripMenuItem helpToolStripMenuItem;
 		private ToolStripMenuItem aboutToolStripMenuItem;
-		private ListboxBar listboxBar1;
+		private ListboxUserControl ListboxUserControl;
+		private NoteInfoUserControl NoteInfoUserControl;
+		private Splitter Splitter;
 	}
 }

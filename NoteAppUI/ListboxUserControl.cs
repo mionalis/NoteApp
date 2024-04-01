@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace NoteAppUI
 {
-	public partial class ListboxBar : UserControl
+	public partial class ListboxUserControl : UserControl
 	{
-		public ListboxBar()
+		public ListboxUserControl()
 		{
 			InitializeComponent();
 		}

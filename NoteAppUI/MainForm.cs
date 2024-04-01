@@ -14,7 +14,7 @@ namespace NoteAppUI
 
 			//Сохранение экземпляра Project в файл.
 			ProjectManager.SaveToFile(Project);
-			
+
 			//Загрузка сохраненного экземпляра Project из файла в локальную переменную deserializedProject.
 			var deserializedProject = ProjectManager.LoadFromFile();
 			//Вывод данных на экран.
@@ -50,6 +50,21 @@ namespace NoteAppUI
 			CategoryLabel.Text = deserializedProject.Notes[0].Category.ToString();
 			LastModifiedTimeLabel.Text = deserializedProject.Notes[0].LastModifiedTime.ToString();
 			CreationTimeLabel.Text = deserializedProject.Notes[0].CreationTime.ToString();*/
+		}
+
+		private void MenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+		{
+
+		}
+
+		private void listboxBar1_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		private void noteInfoUserControl1_Load(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
