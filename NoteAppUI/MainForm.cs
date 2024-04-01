@@ -44,12 +44,12 @@ namespace NoteAppUI
 		/// </summary>
 		private void ShowNotesInfo(Project deserializedProject)
 		{
-			IDLabel.Text = deserializedProject.Notes[0].ID.ToString();
+			/*IDLabel.Text = deserializedProject.Notes[0].ID.ToString();
 			TitleLabel.Text = deserializedProject.Notes[0].Title;
 			ContentLabel.Text = deserializedProject.Notes[0].Content;
 			CategoryLabel.Text = deserializedProject.Notes[0].Category.ToString();
 			LastModifiedTimeLabel.Text = deserializedProject.Notes[0].LastModifiedTime.ToString();
-			CreationTimeLabel.Text = deserializedProject.Notes[0].CreationTime.ToString();
+			CreationTimeLabel.Text = deserializedProject.Notes[0].CreationTime.ToString();*/
 		}
 	}
 }

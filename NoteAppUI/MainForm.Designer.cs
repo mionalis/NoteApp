@@ -28,104 +28,105 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			checkButton = new Button();
-			TitleLabel = new Label();
-			ContentLabel = new Label();
-			CategoryLabel = new Label();
-			IDLabel = new Label();
-			LastModifiedTimeLabel = new Label();
-			CreationTimeLabel = new Label();
+			MenuStrip = new MenuStrip();
+			fileToolStripMenuItem = new ToolStripMenuItem();
+			editToolStripMenuItem = new ToolStripMenuItem();
+			addNoteToolStripMenuItem = new ToolStripMenuItem();
+			editNoteToolStripMenuItem = new ToolStripMenuItem();
+			deleteNoteToolStripMenuItem = new ToolStripMenuItem();
+			helpToolStripMenuItem = new ToolStripMenuItem();
+			aboutToolStripMenuItem = new ToolStripMenuItem();
+			listboxBar1 = new ListboxBar();
+			MenuStrip.SuspendLayout();
 			SuspendLayout();
 			// 
-			// checkButton
+			// MenuStrip
 			// 
-			checkButton.Location = new Point(295, 151);
-			checkButton.Name = "checkButton";
-			checkButton.Size = new Size(94, 29);
-			checkButton.TabIndex = 1;
-			checkButton.Text = "Check ";
-			checkButton.UseVisualStyleBackColor = true;
-			checkButton.Click += checkButton_Click;
+			MenuStrip.ImageScalingSize = new Size(20, 20);
+			MenuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, helpToolStripMenuItem });
+			MenuStrip.Location = new Point(0, 0);
+			MenuStrip.Name = "MenuStrip";
+			MenuStrip.Size = new Size(898, 28);
+			MenuStrip.TabIndex = 0;
+			MenuStrip.Text = "menuStrip1";
 			// 
-			// TitleLabel
+			// fileToolStripMenuItem
 			// 
-			TitleLabel.AutoSize = true;
-			TitleLabel.Location = new Point(92, 71);
-			TitleLabel.Name = "TitleLabel";
-			TitleLabel.Size = new Size(38, 20);
-			TitleLabel.TabIndex = 2;
-			TitleLabel.Text = "Title";
+			fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			fileToolStripMenuItem.Size = new Size(46, 24);
+			fileToolStripMenuItem.Text = "File";
 			// 
-			// ContentLabel
+			// editToolStripMenuItem
 			// 
-			ContentLabel.AutoSize = true;
-			ContentLabel.Location = new Point(92, 91);
-			ContentLabel.Name = "ContentLabel";
-			ContentLabel.Size = new Size(61, 20);
-			ContentLabel.TabIndex = 3;
-			ContentLabel.Text = "Content";
+			editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addNoteToolStripMenuItem, editNoteToolStripMenuItem, deleteNoteToolStripMenuItem });
+			editToolStripMenuItem.Name = "editToolStripMenuItem";
+			editToolStripMenuItem.Size = new Size(49, 24);
+			editToolStripMenuItem.Text = "Edit";
 			// 
-			// CategoryLabel
+			// addNoteToolStripMenuItem
 			// 
-			CategoryLabel.AutoSize = true;
-			CategoryLabel.Location = new Point(92, 111);
-			CategoryLabel.Name = "CategoryLabel";
-			CategoryLabel.Size = new Size(69, 20);
-			CategoryLabel.TabIndex = 4;
-			CategoryLabel.Text = "Category";
+			addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
+			addNoteToolStripMenuItem.Size = new Size(173, 26);
+			addNoteToolStripMenuItem.Text = "Add Note";
 			// 
-			// IDLabel
+			// editNoteToolStripMenuItem
 			// 
-			IDLabel.AutoSize = true;
-			IDLabel.Location = new Point(92, 51);
-			IDLabel.Name = "IDLabel";
-			IDLabel.Size = new Size(24, 20);
-			IDLabel.TabIndex = 5;
-			IDLabel.Text = "ID";
+			editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
+			editNoteToolStripMenuItem.Size = new Size(173, 26);
+			editNoteToolStripMenuItem.Text = "Edit Note";
 			// 
-			// LastModifiedTimeLabel
+			// deleteNoteToolStripMenuItem
 			// 
-			LastModifiedTimeLabel.AutoSize = true;
-			LastModifiedTimeLabel.Location = new Point(92, 131);
-			LastModifiedTimeLabel.Name = "LastModifiedTimeLabel";
-			LastModifiedTimeLabel.Size = new Size(129, 20);
-			LastModifiedTimeLabel.TabIndex = 6;
-			LastModifiedTimeLabel.Text = "LastModifiedTime";
+			deleteNoteToolStripMenuItem.Name = "deleteNoteToolStripMenuItem";
+			deleteNoteToolStripMenuItem.Size = new Size(173, 26);
+			deleteNoteToolStripMenuItem.Text = "Delete Note";
 			// 
-			// CreationTimeLabel
+			// helpToolStripMenuItem
 			// 
-			CreationTimeLabel.AutoSize = true;
-			CreationTimeLabel.Location = new Point(92, 151);
-			CreationTimeLabel.Name = "CreationTimeLabel";
-			CreationTimeLabel.Size = new Size(98, 20);
-			CreationTimeLabel.TabIndex = 7;
-			CreationTimeLabel.Text = "CreationTime";
+			helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
+			helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			helpToolStripMenuItem.Size = new Size(55, 24);
+			helpToolStripMenuItem.Text = "Help";
+			// 
+			// aboutToolStripMenuItem
+			// 
+			aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			aboutToolStripMenuItem.Size = new Size(133, 26);
+			aboutToolStripMenuItem.Text = "About";
+			// 
+			// listboxBar1
+			// 
+			listboxBar1.Location = new Point(12, 31);
+			listboxBar1.Name = "listboxBar1";
+			listboxBar1.Size = new Size(360, 671);
+			listboxBar1.TabIndex = 1;
 			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(570, 283);
-			Controls.Add(CreationTimeLabel);
-			Controls.Add(LastModifiedTimeLabel);
-			Controls.Add(IDLabel);
-			Controls.Add(CategoryLabel);
-			Controls.Add(ContentLabel);
-			Controls.Add(TitleLabel);
-			Controls.Add(checkButton);
+			ClientSize = new Size(898, 567);
+			Controls.Add(listboxBar1);
+			Controls.Add(MenuStrip);
+			MainMenuStrip = MenuStrip;
 			Name = "MainForm";
 			Text = "NoteApp";
+			MenuStrip.ResumeLayout(false);
+			MenuStrip.PerformLayout();
 			ResumeLayout(false);
 			PerformLayout();
 		}
 
 		#endregion
-		private Button checkButton;
-		private Label TitleLabel;
-		private Label ContentLabel;
-		private Label CategoryLabel;
-		private Label IDLabel;
-		private Label LastModifiedTimeLabel;
-		private Label CreationTimeLabel;
+
+		private MenuStrip MenuStrip;
+		private ToolStripMenuItem fileToolStripMenuItem;
+		private ToolStripMenuItem editToolStripMenuItem;
+		private ToolStripMenuItem addNoteToolStripMenuItem;
+		private ToolStripMenuItem editNoteToolStripMenuItem;
+		private ToolStripMenuItem deleteNoteToolStripMenuItem;
+		private ToolStripMenuItem helpToolStripMenuItem;
+		private ToolStripMenuItem aboutToolStripMenuItem;
+		private ListboxBar listboxBar1;
 	}
 }
