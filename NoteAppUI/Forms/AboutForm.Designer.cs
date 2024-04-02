@@ -127,6 +127,9 @@
 			Controls.Add(AuthorLabel);
 			Controls.Add(VersionLabel);
 			Controls.Add(NoteAppLabel);
+			FormBorderStyle = FormBorderStyle.FixedSingle;
+			MaximizeBox = false;
+			MinimizeBox = false;
 			Name = "AboutForm";
 			Text = "AboutForm";
 			ResumeLayout(false);

@@ -39,17 +39,18 @@
 			// 
 			// noteInfoUserControl1
 			// 
-			noteInfoUserControl1.Dock = DockStyle.Bottom;
+			noteInfoUserControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			noteInfoUserControl1.Location = new Point(0, 103);
 			noteInfoUserControl1.MinimumSize = new Size(505, 565);
 			noteInfoUserControl1.Name = "noteInfoUserControl1";
 			noteInfoUserControl1.Padding = new Padding(10, 0, 10, 10);
-			noteInfoUserControl1.Size = new Size(800, 587);
+			noteInfoUserControl1.Size = new Size(800, 627);
 			noteInfoUserControl1.TabIndex = 0;
 			// 
 			// CancelButton
 			// 
-			CancelButton.Location = new Point(696, 604);
+			CancelButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			CancelButton.Location = new Point(694, 651);
 			CancelButton.Margin = new Padding(5);
 			CancelButton.Name = "CancelButton";
 			CancelButton.Size = new Size(94, 29);
@@ -59,7 +60,8 @@
 			// 
 			// OKButton
 			// 
-			OKButton.Location = new Point(594, 604);
+			OKButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			OKButton.Location = new Point(594, 651);
 			OKButton.Name = "OKButton";
 			OKButton.Size = new Size(94, 29);
 			OKButton.TabIndex = 2;
@@ -86,6 +88,7 @@
 			// 
 			// TitleTextBox
 			// 
+			TitleTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			TitleTextBox.Location = new Point(90, 18);
 			TitleTextBox.Name = "TitleTextBox";
 			TitleTextBox.Size = new Size(698, 27);
@@ -96,7 +99,7 @@
 			CategoryComboBox.FormattingEnabled = true;
 			CategoryComboBox.Location = new Point(90, 60);
 			CategoryComboBox.Name = "CategoryComboBox";
-			CategoryComboBox.Size = new Size(698, 28);
+			CategoryComboBox.Size = new Size(416, 28);
 			CategoryComboBox.TabIndex = 10;
 			// 
 			// AddEditNoteForm
@@ -111,6 +114,7 @@
 			Controls.Add(OKButton);
 			Controls.Add(CancelButton);
 			Controls.Add(noteInfoUserControl1);
+			MinimumSize = new Size(800, 700);
 			Name = "AddEditNoteForm";
 			Text = "AddEditNoteForm";
 			ResumeLayout(false);

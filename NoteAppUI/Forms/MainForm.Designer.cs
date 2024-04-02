@@ -65,7 +65,7 @@
 			// exitToolStripMenuItem
 			// 
 			exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			exitToolStripMenuItem.Size = new Size(224, 26);
+			exitToolStripMenuItem.Size = new Size(116, 26);
 			exitToolStripMenuItem.Text = "Exit";
 			exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
 			// 
@@ -173,6 +173,7 @@
 			Controls.Add(ListboxUserControl);
 			Controls.Add(MenuStrip);
 			MainMenuStrip = MenuStrip;
+			MinimumSize = new Size(1000, 700);
 			Name = "MainForm";
 			Text = "NoteApp";
 			MenuStrip.ResumeLayout(false);
