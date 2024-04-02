@@ -38,7 +38,9 @@
 			aboutToolStripMenuItem = new ToolStripMenuItem();
 			ListboxUserControl = new ListboxUserControl();
 			NoteInfoUserControl = new NoteInfoUserControl();
-			Splitter = new Splitter();
+			CategoryLabel = new Label();
+			NoteCategoryLabel = new Label();
+			NoteAppLabel = new Label();
 			MenuStrip.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -111,29 +113,52 @@
 			// 
 			// NoteInfoUserControl
 			// 
-			NoteInfoUserControl.Dock = DockStyle.Fill;
-			NoteInfoUserControl.Location = new Point(379, 28);
+			NoteInfoUserControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			NoteInfoUserControl.Location = new Point(379, 104);
 			NoteInfoUserControl.MinimumSize = new Size(505, 565);
 			NoteInfoUserControl.Name = "NoteInfoUserControl";
 			NoteInfoUserControl.Padding = new Padding(10, 0, 10, 10);
-			NoteInfoUserControl.Size = new Size(678, 641);
+			NoteInfoUserControl.Size = new Size(678, 565);
 			NoteInfoUserControl.TabIndex = 2;
 			NoteInfoUserControl.Load += noteInfoUserControl1_Load;
 			// 
-			// Splitter
+			// CategoryLabel
 			// 
-			Splitter.Location = new Point(379, 28);
-			Splitter.Name = "Splitter";
-			Splitter.Size = new Size(4, 641);
-			Splitter.TabIndex = 3;
-			Splitter.TabStop = false;
+			CategoryLabel.AutoSize = true;
+			CategoryLabel.Location = new Point(392, 76);
+			CategoryLabel.Name = "CategoryLabel";
+			CategoryLabel.Size = new Size(72, 20);
+			CategoryLabel.TabIndex = 4;
+			CategoryLabel.Text = "Category:";
+			// 
+			// NoteCategoryLabel
+			// 
+			NoteCategoryLabel.AutoSize = true;
+			NoteCategoryLabel.Location = new Point(470, 76);
+			NoteCategoryLabel.Name = "NoteCategoryLabel";
+			NoteCategoryLabel.Size = new Size(69, 20);
+			NoteCategoryLabel.TabIndex = 5;
+			NoteCategoryLabel.Text = "Category";
+			// 
+			// NoteAppLabel
+			// 
+			NoteAppLabel.AutoSize = true;
+			NoteAppLabel.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point);
+			NoteAppLabel.Location = new Point(388, 28);
+			NoteAppLabel.Name = "NoteAppLabel";
+			NoteAppLabel.RightToLeft = RightToLeft.Yes;
+			NoteAppLabel.Size = new Size(152, 41);
+			NoteAppLabel.TabIndex = 6;
+			NoteAppLabel.Text = "NoteApp";
 			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1057, 669);
-			Controls.Add(Splitter);
+			Controls.Add(NoteAppLabel);
+			Controls.Add(NoteCategoryLabel);
+			Controls.Add(CategoryLabel);
 			Controls.Add(NoteInfoUserControl);
 			Controls.Add(ListboxUserControl);
 			Controls.Add(MenuStrip);
@@ -158,6 +183,8 @@
 		private ToolStripMenuItem aboutToolStripMenuItem;
 		private ListboxUserControl ListboxUserControl;
 		private NoteInfoUserControl NoteInfoUserControl;
-		private Splitter Splitter;
+		private Label CategoryLabel;
+		private Label NoteCategoryLabel;
+		private Label NoteAppLabel;
 	}
 }
