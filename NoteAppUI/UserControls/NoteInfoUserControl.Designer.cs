@@ -107,7 +107,7 @@
 			NoteContentTextBox.Location = new Point(0, 113);
 			NoteContentTextBox.Multiline = true;
 			NoteContentTextBox.Name = "NoteContentTextBox";
-			NoteContentTextBox.Size = new Size(502, 450);
+			NoteContentTextBox.Size = new Size(501, 450);
 			NoteContentTextBox.TabIndex = 7;
 			// 
 			// NoteInfoUserControl
@@ -124,7 +124,7 @@
 			Controls.Add(NoteTitleLabel);
 			MinimumSize = new Size(505, 565);
 			Name = "NoteInfoUserControl";
-			Size = new Size(506, 566);
+			Size = new Size(505, 566);
 			ResumeLayout(false);
 			PerformLayout();
 		}
