@@ -30,6 +30,7 @@
 		{
 			MenuStrip = new MenuStrip();
 			fileToolStripMenuItem = new ToolStripMenuItem();
+			exitToolStripMenuItem = new ToolStripMenuItem();
 			editToolStripMenuItem = new ToolStripMenuItem();
 			addNoteToolStripMenuItem = new ToolStripMenuItem();
 			editNoteToolStripMenuItem = new ToolStripMenuItem();
@@ -53,13 +54,20 @@
 			MenuStrip.Size = new Size(1057, 28);
 			MenuStrip.TabIndex = 0;
 			MenuStrip.Text = "menuStrip1";
-			MenuStrip.ItemClicked += MenuStrip_ItemClicked;
 			// 
 			// fileToolStripMenuItem
 			// 
+			fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
 			fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			fileToolStripMenuItem.Size = new Size(46, 24);
 			fileToolStripMenuItem.Text = "File";
+			// 
+			// exitToolStripMenuItem
+			// 
+			exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			exitToolStripMenuItem.Size = new Size(224, 26);
+			exitToolStripMenuItem.Text = "Exit";
+			exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
 			// 
 			// editToolStripMenuItem
 			// 
@@ -71,20 +79,23 @@
 			// addNoteToolStripMenuItem
 			// 
 			addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-			addNoteToolStripMenuItem.Size = new Size(173, 26);
+			addNoteToolStripMenuItem.Size = new Size(224, 26);
 			addNoteToolStripMenuItem.Text = "Add Note";
+			addNoteToolStripMenuItem.Click += AddNoteToolStripMenuItem_Click;
 			// 
 			// editNoteToolStripMenuItem
 			// 
 			editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
-			editNoteToolStripMenuItem.Size = new Size(173, 26);
+			editNoteToolStripMenuItem.Size = new Size(224, 26);
 			editNoteToolStripMenuItem.Text = "Edit Note";
+			editNoteToolStripMenuItem.Click += EditNoteToolStripMenuItem_Click;
 			// 
 			// deleteNoteToolStripMenuItem
 			// 
 			deleteNoteToolStripMenuItem.Name = "deleteNoteToolStripMenuItem";
-			deleteNoteToolStripMenuItem.Size = new Size(173, 26);
+			deleteNoteToolStripMenuItem.Size = new Size(224, 26);
 			deleteNoteToolStripMenuItem.Text = "Delete Note";
+			deleteNoteToolStripMenuItem.Click += DeleteNoteToolStripMenuItem_Click;
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -98,6 +109,7 @@
 			aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 			aboutToolStripMenuItem.Size = new Size(133, 26);
 			aboutToolStripMenuItem.Text = "About";
+			aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
 			// 
 			// ListboxUserControl
 			// 
@@ -109,7 +121,6 @@
 			ListboxUserControl.Padding = new Padding(10, 0, 10, 10);
 			ListboxUserControl.Size = new Size(379, 641);
 			ListboxUserControl.TabIndex = 1;
-			ListboxUserControl.Load += listboxBar1_Load;
 			// 
 			// NoteInfoUserControl
 			// 
@@ -120,7 +131,6 @@
 			NoteInfoUserControl.Padding = new Padding(10, 0, 10, 10);
 			NoteInfoUserControl.Size = new Size(678, 565);
 			NoteInfoUserControl.TabIndex = 2;
-			NoteInfoUserControl.Load += noteInfoUserControl1_Load;
 			// 
 			// CategoryLabel
 			// 
@@ -186,5 +196,6 @@
 		private Label CategoryLabel;
 		private Label NoteCategoryLabel;
 		private Label NoteAppLabel;
+		private ToolStripMenuItem exitToolStripMenuItem;
 	}
 }

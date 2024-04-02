@@ -1,6 +1,7 @@
 namespace NoteAppUI
 {
 	using NoteApp;
+	using NoteAppUI.Forms;
 
 	public partial class MainForm : Form
 	{
@@ -52,19 +53,32 @@ namespace NoteAppUI
 			CreationTimeLabel.Text = deserializedProject.Notes[0].CreationTime.ToString();*/
 		}
 
-		private void MenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			Application.Exit();
 		}
 
-		private void listboxBar1_Load(object sender, EventArgs e)
+		private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			var addNoteForm = new AddEditNoteForm();
+			addNoteForm.Show();
 		}
 
-		private void noteInfoUserControl1_Load(object sender, EventArgs e)
+		private void EditNoteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			var editNoteForm = new AddEditNoteForm();
+			editNoteForm.Show();
+		}
 
+		private void DeleteNoteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var aboutForm = new AboutForm();
+			aboutForm.Show();
 		}
 	}
 }
