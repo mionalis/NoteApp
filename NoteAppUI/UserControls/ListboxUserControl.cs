@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NoteApp;
+using NoteAppUI.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,21 @@ namespace NoteAppUI
 		public ListboxUserControl()
 		{
 			InitializeComponent();
+		}
+
+		private void AddNoteButton_Click(object sender, EventArgs e)
+		{
+			var addNoteForm = new AddEditNoteForm();
+			var note = new Note();
+			addNoteForm.Note = note;
+			addNoteForm.UpdateNoteInfo();
+			addNoteForm.Show();
+		}
+
+		private void EditNoteButton_Click(object sender, EventArgs e)
+		{
+			var editNoteForm = new AddEditNoteForm();
+			editNoteForm.Show();
 		}
 	}
 }

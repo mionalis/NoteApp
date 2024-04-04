@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			MenuStrip = new MenuStrip();
 			fileToolStripMenuItem = new ToolStripMenuItem();
 			exitToolStripMenuItem = new ToolStripMenuItem();
@@ -37,12 +38,26 @@
 			deleteNoteToolStripMenuItem = new ToolStripMenuItem();
 			helpToolStripMenuItem = new ToolStripMenuItem();
 			aboutToolStripMenuItem = new ToolStripMenuItem();
-			ListboxUserControl = new ListboxUserControl();
-			NoteInfoUserControl = new NoteInfoUserControl();
 			CategoryLabel = new Label();
 			NoteCategoryLabel = new Label();
-			NoteAppLabel = new Label();
+			TitleLabel = new Label();
+			DeleteNoteButton = new Button();
+			EditNoteButton = new Button();
+			AddNoteButton = new Button();
+			NotesListbox = new ListBox();
+			CategoryComboBox = new ComboBox();
+			ShowCategoryLabel = new Label();
+			ModifiedTextBox = new TextBox();
+			CreatedTextBox = new TextBox();
+			ContentTextBox = new TextBox();
+			ModifiedLabel = new Label();
+			CreatedLabel = new Label();
+			splitContainer1 = new SplitContainer();
 			MenuStrip.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+			splitContainer1.Panel1.SuspendLayout();
+			splitContainer1.Panel2.SuspendLayout();
+			splitContainer1.SuspendLayout();
 			SuspendLayout();
 			// 
 			// MenuStrip
@@ -51,7 +66,7 @@
 			MenuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, helpToolStripMenuItem });
 			MenuStrip.Location = new Point(0, 0);
 			MenuStrip.Name = "MenuStrip";
-			MenuStrip.Size = new Size(1057, 28);
+			MenuStrip.Size = new Size(991, 28);
 			MenuStrip.TabIndex = 0;
 			MenuStrip.Text = "menuStrip1";
 			// 
@@ -79,21 +94,21 @@
 			// addNoteToolStripMenuItem
 			// 
 			addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-			addNoteToolStripMenuItem.Size = new Size(224, 26);
+			addNoteToolStripMenuItem.Size = new Size(173, 26);
 			addNoteToolStripMenuItem.Text = "Add Note";
 			addNoteToolStripMenuItem.Click += AddNoteToolStripMenuItem_Click;
 			// 
 			// editNoteToolStripMenuItem
 			// 
 			editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
-			editNoteToolStripMenuItem.Size = new Size(224, 26);
+			editNoteToolStripMenuItem.Size = new Size(173, 26);
 			editNoteToolStripMenuItem.Text = "Edit Note";
 			editNoteToolStripMenuItem.Click += EditNoteToolStripMenuItem_Click;
 			// 
 			// deleteNoteToolStripMenuItem
 			// 
 			deleteNoteToolStripMenuItem.Name = "deleteNoteToolStripMenuItem";
-			deleteNoteToolStripMenuItem.Size = new Size(224, 26);
+			deleteNoteToolStripMenuItem.Size = new Size(173, 26);
 			deleteNoteToolStripMenuItem.Text = "Delete Note";
 			deleteNoteToolStripMenuItem.Click += DeleteNoteToolStripMenuItem_Click;
 			// 
@@ -111,31 +126,10 @@
 			aboutToolStripMenuItem.Text = "About";
 			aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
 			// 
-			// ListboxUserControl
-			// 
-			ListboxUserControl.Dock = DockStyle.Left;
-			ListboxUserControl.Location = new Point(0, 28);
-			ListboxUserControl.Margin = new Padding(5);
-			ListboxUserControl.MinimumSize = new Size(300, 540);
-			ListboxUserControl.Name = "ListboxUserControl";
-			ListboxUserControl.Padding = new Padding(10, 0, 10, 10);
-			ListboxUserControl.Size = new Size(379, 641);
-			ListboxUserControl.TabIndex = 1;
-			// 
-			// NoteInfoUserControl
-			// 
-			NoteInfoUserControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			NoteInfoUserControl.Location = new Point(379, 104);
-			NoteInfoUserControl.MinimumSize = new Size(505, 565);
-			NoteInfoUserControl.Name = "NoteInfoUserControl";
-			NoteInfoUserControl.Padding = new Padding(10, 0, 10, 10);
-			NoteInfoUserControl.Size = new Size(678, 565);
-			NoteInfoUserControl.TabIndex = 2;
-			// 
 			// CategoryLabel
 			// 
 			CategoryLabel.AutoSize = true;
-			CategoryLabel.Location = new Point(392, 76);
+			CategoryLabel.Location = new Point(3, 63);
 			CategoryLabel.Name = "CategoryLabel";
 			CategoryLabel.Size = new Size(72, 20);
 			CategoryLabel.TabIndex = 4;
@@ -144,33 +138,177 @@
 			// NoteCategoryLabel
 			// 
 			NoteCategoryLabel.AutoSize = true;
-			NoteCategoryLabel.Location = new Point(470, 76);
+			NoteCategoryLabel.Location = new Point(86, 63);
 			NoteCategoryLabel.Name = "NoteCategoryLabel";
 			NoteCategoryLabel.Size = new Size(69, 20);
 			NoteCategoryLabel.TabIndex = 5;
 			NoteCategoryLabel.Text = "Category";
 			// 
-			// NoteAppLabel
+			// TitleLabel
 			// 
-			NoteAppLabel.AutoSize = true;
-			NoteAppLabel.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point);
-			NoteAppLabel.Location = new Point(388, 28);
-			NoteAppLabel.Name = "NoteAppLabel";
-			NoteAppLabel.RightToLeft = RightToLeft.Yes;
-			NoteAppLabel.Size = new Size(152, 41);
-			NoteAppLabel.TabIndex = 6;
-			NoteAppLabel.Text = "NoteApp";
+			TitleLabel.AutoSize = true;
+			TitleLabel.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point);
+			TitleLabel.Location = new Point(3, 13);
+			TitleLabel.Name = "TitleLabel";
+			TitleLabel.RightToLeft = RightToLeft.Yes;
+			TitleLabel.Size = new Size(152, 41);
+			TitleLabel.TabIndex = 6;
+			TitleLabel.Text = "NoteApp";
+			// 
+			// DeleteNoteButton
+			// 
+			DeleteNoteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			DeleteNoteButton.BackColor = SystemColors.Control;
+			DeleteNoteButton.FlatAppearance.BorderSize = 0;
+			DeleteNoteButton.FlatStyle = FlatStyle.Flat;
+			DeleteNoteButton.Image = (Image)resources.GetObject("DeleteNoteButton.Image");
+			DeleteNoteButton.Location = new Point(120, 583);
+			DeleteNoteButton.Name = "DeleteNoteButton";
+			DeleteNoteButton.Size = new Size(48, 46);
+			DeleteNoteButton.TabIndex = 12;
+			DeleteNoteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+			DeleteNoteButton.UseVisualStyleBackColor = false;
+			DeleteNoteButton.Click += DeleteNoteButton_Click;
+			// 
+			// EditNoteButton
+			// 
+			EditNoteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			EditNoteButton.BackColor = SystemColors.Control;
+			EditNoteButton.FlatAppearance.BorderSize = 0;
+			EditNoteButton.FlatStyle = FlatStyle.Flat;
+			EditNoteButton.Image = (Image)resources.GetObject("EditNoteButton.Image");
+			EditNoteButton.Location = new Point(66, 583);
+			EditNoteButton.Name = "EditNoteButton";
+			EditNoteButton.Size = new Size(48, 46);
+			EditNoteButton.TabIndex = 11;
+			EditNoteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+			EditNoteButton.UseVisualStyleBackColor = false;
+			EditNoteButton.Click += EditNoteButton_Click;
+			// 
+			// AddNoteButton
+			// 
+			AddNoteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			AddNoteButton.BackColor = SystemColors.Control;
+			AddNoteButton.FlatAppearance.BorderSize = 0;
+			AddNoteButton.FlatStyle = FlatStyle.Flat;
+			AddNoteButton.Image = (Image)resources.GetObject("AddNoteButton.Image");
+			AddNoteButton.Location = new Point(12, 583);
+			AddNoteButton.Name = "AddNoteButton";
+			AddNoteButton.Size = new Size(48, 46);
+			AddNoteButton.TabIndex = 10;
+			AddNoteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+			AddNoteButton.UseVisualStyleBackColor = false;
+			AddNoteButton.Click += AddNoteButton_Click;
+			// 
+			// NotesListbox
+			// 
+			NotesListbox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			NotesListbox.FormattingEnabled = true;
+			NotesListbox.ItemHeight = 20;
+			NotesListbox.Location = new Point(12, 46);
+			NotesListbox.Name = "NotesListbox";
+			NotesListbox.Size = new Size(444, 524);
+			NotesListbox.TabIndex = 9;
+			NotesListbox.SelectedIndexChanged += NotesListbox_SelectedIndexChanged;
+			// 
+			// CategoryComboBox
+			// 
+			CategoryComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			CategoryComboBox.FormattingEnabled = true;
+			CategoryComboBox.Location = new Point(130, 13);
+			CategoryComboBox.Name = "CategoryComboBox";
+			CategoryComboBox.Size = new Size(326, 28);
+			CategoryComboBox.TabIndex = 8;
+			// 
+			// ShowCategoryLabel
+			// 
+			ShowCategoryLabel.AutoSize = true;
+			ShowCategoryLabel.Location = new Point(12, 13);
+			ShowCategoryLabel.Name = "ShowCategoryLabel";
+			ShowCategoryLabel.Size = new Size(112, 20);
+			ShowCategoryLabel.TabIndex = 7;
+			ShowCategoryLabel.Text = "Show Category:";
+			// 
+			// ModifiedTextBox
+			// 
+			ModifiedTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			ModifiedTextBox.Enabled = false;
+			ModifiedTextBox.Location = new Point(345, 91);
+			ModifiedTextBox.Name = "ModifiedTextBox";
+			ModifiedTextBox.Size = new Size(163, 27);
+			ModifiedTextBox.TabIndex = 17;
+			// 
+			// CreatedTextBox
+			// 
+			CreatedTextBox.Enabled = false;
+			CreatedTextBox.Location = new Point(73, 91);
+			CreatedTextBox.Name = "CreatedTextBox";
+			CreatedTextBox.Size = new Size(163, 27);
+			CreatedTextBox.TabIndex = 16;
+			// 
+			// ContentTextBox
+			// 
+			ContentTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			ContentTextBox.Enabled = false;
+			ContentTextBox.Location = new Point(3, 124);
+			ContentTextBox.Multiline = true;
+			ContentTextBox.Name = "ContentTextBox";
+			ContentTextBox.Size = new Size(505, 505);
+			ContentTextBox.TabIndex = 15;
+			// 
+			// ModifiedLabel
+			// 
+			ModifiedLabel.AutoSize = true;
+			ModifiedLabel.Location = new Point(266, 94);
+			ModifiedLabel.Name = "ModifiedLabel";
+			ModifiedLabel.Size = new Size(73, 20);
+			ModifiedLabel.TabIndex = 14;
+			ModifiedLabel.Text = "Modified:";
+			// 
+			// CreatedLabel
+			// 
+			CreatedLabel.AutoSize = true;
+			CreatedLabel.Location = new Point(3, 94);
+			CreatedLabel.Name = "CreatedLabel";
+			CreatedLabel.Size = new Size(64, 20);
+			CreatedLabel.TabIndex = 13;
+			CreatedLabel.Text = "Created:";
+			// 
+			// splitContainer1
+			// 
+			splitContainer1.Dock = DockStyle.Fill;
+			splitContainer1.Location = new Point(0, 28);
+			splitContainer1.Name = "splitContainer1";
+			// 
+			// splitContainer1.Panel1
+			// 
+			splitContainer1.Panel1.Controls.Add(NotesListbox);
+			splitContainer1.Panel1.Controls.Add(ShowCategoryLabel);
+			splitContainer1.Panel1.Controls.Add(CategoryComboBox);
+			splitContainer1.Panel1.Controls.Add(AddNoteButton);
+			splitContainer1.Panel1.Controls.Add(EditNoteButton);
+			splitContainer1.Panel1.Controls.Add(DeleteNoteButton);
+			// 
+			// splitContainer1.Panel2
+			// 
+			splitContainer1.Panel2.Controls.Add(CreatedTextBox);
+			splitContainer1.Panel2.Controls.Add(ModifiedTextBox);
+			splitContainer1.Panel2.Controls.Add(CategoryLabel);
+			splitContainer1.Panel2.Controls.Add(NoteCategoryLabel);
+			splitContainer1.Panel2.Controls.Add(ContentTextBox);
+			splitContainer1.Panel2.Controls.Add(TitleLabel);
+			splitContainer1.Panel2.Controls.Add(ModifiedLabel);
+			splitContainer1.Panel2.Controls.Add(CreatedLabel);
+			splitContainer1.Size = new Size(991, 641);
+			splitContainer1.SplitterDistance = 459;
+			splitContainer1.TabIndex = 18;
 			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1057, 669);
-			Controls.Add(NoteAppLabel);
-			Controls.Add(NoteCategoryLabel);
-			Controls.Add(CategoryLabel);
-			Controls.Add(NoteInfoUserControl);
-			Controls.Add(ListboxUserControl);
+			ClientSize = new Size(991, 669);
+			Controls.Add(splitContainer1);
 			Controls.Add(MenuStrip);
 			MainMenuStrip = MenuStrip;
 			MinimumSize = new Size(1000, 700);
@@ -178,6 +316,12 @@
 			Text = "NoteApp";
 			MenuStrip.ResumeLayout(false);
 			MenuStrip.PerformLayout();
+			splitContainer1.Panel1.ResumeLayout(false);
+			splitContainer1.Panel1.PerformLayout();
+			splitContainer1.Panel2.ResumeLayout(false);
+			splitContainer1.Panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+			splitContainer1.ResumeLayout(false);
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -192,11 +336,21 @@
 		private ToolStripMenuItem deleteNoteToolStripMenuItem;
 		private ToolStripMenuItem helpToolStripMenuItem;
 		private ToolStripMenuItem aboutToolStripMenuItem;
-		private ListboxUserControl ListboxUserControl;
-		private NoteInfoUserControl NoteInfoUserControl;
 		private Label CategoryLabel;
 		private Label NoteCategoryLabel;
-		private Label NoteAppLabel;
+		private Label TitleLabel;
 		private ToolStripMenuItem exitToolStripMenuItem;
+		private Button DeleteNoteButton;
+		private Button EditNoteButton;
+		private Button AddNoteButton;
+		private ListBox NotesListbox;
+		private ComboBox CategoryComboBox;
+		private Label ShowCategoryLabel;
+		private TextBox ModifiedTextBox;
+		private TextBox CreatedTextBox;
+		private TextBox ContentTextBox;
+		private Label ModifiedLabel;
+		private Label CreatedLabel;
+		private SplitContainer splitContainer1;
 	}
 }

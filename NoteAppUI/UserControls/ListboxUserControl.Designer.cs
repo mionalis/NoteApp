@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListboxUserControl));
 			ShowCategoryLabel = new Label();
 			CategoryComboBox = new ComboBox();
 			NotesListbox = new ListBox();
@@ -61,38 +62,52 @@
 			NotesListbox.ItemHeight = 20;
 			NotesListbox.Location = new Point(3, 37);
 			NotesListbox.Name = "NotesListbox";
-			NotesListbox.Size = new Size(294, 464);
+			NotesListbox.Size = new Size(294, 484);
 			NotesListbox.TabIndex = 2;
 			// 
 			// AddNoteButton
 			// 
 			AddNoteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-			AddNoteButton.Location = new Point(3, 508);
+			AddNoteButton.BackColor = SystemColors.Control;
+			AddNoteButton.FlatAppearance.BorderSize = 0;
+			AddNoteButton.FlatStyle = FlatStyle.Flat;
+			AddNoteButton.Image = (Image)resources.GetObject("AddNoteButton.Image");
+			AddNoteButton.Location = new Point(3, 527);
 			AddNoteButton.Name = "AddNoteButton";
-			AddNoteButton.Size = new Size(94, 29);
+			AddNoteButton.Size = new Size(48, 46);
 			AddNoteButton.TabIndex = 3;
-			AddNoteButton.Text = "button1";
-			AddNoteButton.UseVisualStyleBackColor = true;
+			AddNoteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+			AddNoteButton.UseVisualStyleBackColor = false;
+			AddNoteButton.Click += AddNoteButton_Click;
 			// 
 			// EditNoteButton
 			// 
 			EditNoteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-			EditNoteButton.Location = new Point(103, 508);
+			EditNoteButton.BackColor = SystemColors.Control;
+			EditNoteButton.FlatAppearance.BorderSize = 0;
+			EditNoteButton.FlatStyle = FlatStyle.Flat;
+			EditNoteButton.Image = (Image)resources.GetObject("EditNoteButton.Image");
+			EditNoteButton.Location = new Point(57, 527);
 			EditNoteButton.Name = "EditNoteButton";
-			EditNoteButton.Size = new Size(94, 29);
+			EditNoteButton.Size = new Size(48, 46);
 			EditNoteButton.TabIndex = 4;
-			EditNoteButton.Text = "button2";
-			EditNoteButton.UseVisualStyleBackColor = true;
+			EditNoteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+			EditNoteButton.UseVisualStyleBackColor = false;
+			EditNoteButton.Click += EditNoteButton_Click;
 			// 
 			// DeleteNoteButton
 			// 
 			DeleteNoteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-			DeleteNoteButton.Location = new Point(203, 508);
+			DeleteNoteButton.BackColor = SystemColors.Control;
+			DeleteNoteButton.FlatAppearance.BorderSize = 0;
+			DeleteNoteButton.FlatStyle = FlatStyle.Flat;
+			DeleteNoteButton.Image = (Image)resources.GetObject("DeleteNoteButton.Image");
+			DeleteNoteButton.Location = new Point(111, 527);
 			DeleteNoteButton.Name = "DeleteNoteButton";
-			DeleteNoteButton.Size = new Size(94, 29);
+			DeleteNoteButton.Size = new Size(48, 46);
 			DeleteNoteButton.TabIndex = 5;
-			DeleteNoteButton.Text = "button3";
-			DeleteNoteButton.UseVisualStyleBackColor = true;
+			DeleteNoteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+			DeleteNoteButton.UseVisualStyleBackColor = false;
 			// 
 			// ListboxUserControl
 			// 
@@ -106,7 +121,7 @@
 			Controls.Add(ShowCategoryLabel);
 			MinimumSize = new Size(300, 540);
 			Name = "ListboxUserControl";
-			Size = new Size(300, 540);
+			Size = new Size(300, 576);
 			ResumeLayout(false);
 			PerformLayout();
 		}

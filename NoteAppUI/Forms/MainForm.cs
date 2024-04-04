@@ -2,24 +2,13 @@ namespace NoteAppUI
 {
 	using NoteApp;
 	using NoteAppUI.Forms;
+	using System.Windows.Forms;
 
 	public partial class MainForm : Form
 	{
 		public MainForm()
 		{
 			InitializeComponent();
-
-			Note = new Note("Список покупок", "Молоко, хлеб", NoteCategory.Home);
-
-			Project.Notes.Add(Note);
-
-			//Сохранение экземпляра Project в файл.
-			ProjectManager.SaveToFile(Project);
-
-			//Загрузка сохраненного экземпляра Project из файла в локальную переменную deserializedProject.
-			var deserializedProject = ProjectManager.LoadFromFile();
-			//Вывод данных на экран.
-			ShowNotesInfo(deserializedProject);
 		}
 
 		/// <summary>
@@ -27,31 +16,12 @@ namespace NoteAppUI
 		/// </summary>
 		private Note Note { get; set; }
 
+		private int SelectedNoteIndex { get; set; } = -1;
+
 		/// <summary>
 		/// Возвращает и задает экземпляр класса Project.
 		/// </summary>
 		private Project Project { get; set; } = new();
-
-		private void checkButton_Click(object sender, EventArgs e)
-		{
-			var deserializedProject = ProjectManager.LoadFromFile();
-			ShowNotesInfo(deserializedProject);
-		}
-
-		/// <summary>
-		/// Отображает данные первой заметки в списке для проверки работы классов
-		/// <see cref="Project"/> и <see cref="ProjectManager"/>.
-		/// <param name="deserializedProject">Экземпляр класса Project, хранящий список с заметками.</param>>
-		/// </summary>
-		private void ShowNotesInfo(Project deserializedProject)
-		{
-			/*IDLabel.Text = deserializedProject.Notes[0].ID.ToString();
-			TitleLabel.Text = deserializedProject.Notes[0].Title;
-			ContentLabel.Text = deserializedProject.Notes[0].Content;
-			CategoryLabel.Text = deserializedProject.Notes[0].Category.ToString();
-			LastModifiedTimeLabel.Text = deserializedProject.Notes[0].LastModifiedTime.ToString();
-			CreationTimeLabel.Text = deserializedProject.Notes[0].CreationTime.ToString();*/
-		}
 
 		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -72,13 +42,69 @@ namespace NoteAppUI
 
 		private void DeleteNoteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			
+
 		}
 
 		private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			var aboutForm = new AboutForm();
 			aboutForm.Show();
+		}
+
+		private void AddNoteButton_Click(object sender, EventArgs e)
+		{
+			var addNoteForm = new AddEditNoteForm();
+			var note = new Note();
+			addNoteForm.Note = note;
+			addNoteForm.UpdateNoteInfo();
+			addNoteForm.ShowDialog();
+
+			if (addNoteForm.DialogResult != DialogResult.OK)
+			{
+				return;
+			}
+			
+			Note = addNoteForm.Note;
+			NotesListbox.Items.Add(Note.Title);
+			Project.Notes.Add(Note);
+		}
+
+		private void EditNoteButton_Click(object sender, EventArgs e)
+		{
+			var editNoteForm = new AddEditNoteForm();
+			editNoteForm.Note = Note;
+			editNoteForm.UpdateNoteInfo();
+			editNoteForm.ShowDialog();
+
+			if (editNoteForm.DialogResult != DialogResult.OK)
+			{
+				return;
+			}
+			
+			Note = editNoteForm.Note;
+			Project.Notes[SelectedNoteIndex] = Note;
+			NotesListbox.Items[SelectedNoteIndex] = Note.Title;
+		}
+
+		private void DeleteNoteButton_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void NotesListbox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (NotesListbox.SelectedIndex == -1)
+			{
+				return;
+			}
+
+			Note = Project.Notes[NotesListbox.SelectedIndex];
+			SelectedNoteIndex = NotesListbox.SelectedIndex;
+			TitleLabel.Text = Project.Notes[NotesListbox.SelectedIndex].Title;
+			CreatedTextBox.Text = Project.Notes[NotesListbox.SelectedIndex].CreationTime.ToString();
+			ModifiedTextBox.Text = Project.Notes[NotesListbox.SelectedIndex].LastModifiedTime.ToString();
+			NoteCategoryLabel.Text = Project.Notes[NotesListbox.SelectedIndex].Category.ToString();
+			ContentTextBox.Text = Project.Notes[NotesListbox.SelectedIndex].Content;
 		}
 	}
 }

@@ -28,24 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			noteInfoUserControl1 = new NoteInfoUserControl();
 			CancelButton = new Button();
 			OKButton = new Button();
 			CategoryLabel = new Label();
 			TitleLabel = new Label();
 			TitleTextBox = new TextBox();
 			CategoryComboBox = new ComboBox();
+			ModifiedTextBox = new TextBox();
+			CreatedTextBox = new TextBox();
+			ContentTextBox = new TextBox();
+			ModifiedLabel = new Label();
+			CreatedLabel = new Label();
 			SuspendLayout();
-			// 
-			// noteInfoUserControl1
-			// 
-			noteInfoUserControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			noteInfoUserControl1.Location = new Point(0, 103);
-			noteInfoUserControl1.MinimumSize = new Size(505, 565);
-			noteInfoUserControl1.Name = "noteInfoUserControl1";
-			noteInfoUserControl1.Padding = new Padding(10, 0, 10, 10);
-			noteInfoUserControl1.Size = new Size(800, 627);
-			noteInfoUserControl1.TabIndex = 0;
 			// 
 			// CancelButton
 			// 
@@ -67,6 +61,7 @@
 			OKButton.TabIndex = 2;
 			OKButton.Text = "OK";
 			OKButton.UseVisualStyleBackColor = true;
+			OKButton.Click += OKButton_Click;
 			// 
 			// CategoryLabel
 			// 
@@ -93,6 +88,7 @@
 			TitleTextBox.Name = "TitleTextBox";
 			TitleTextBox.Size = new Size(698, 27);
 			TitleTextBox.TabIndex = 9;
+			TitleTextBox.TextChanged += TitleTextBox_TextChanged;
 			// 
 			// CategoryComboBox
 			// 
@@ -101,19 +97,67 @@
 			CategoryComboBox.Name = "CategoryComboBox";
 			CategoryComboBox.Size = new Size(416, 28);
 			CategoryComboBox.TabIndex = 10;
+			CategoryComboBox.SelectedIndexChanged += CategoryComboBox_SelectedIndexChanged;
+			// 
+			// ModifiedTextBox
+			// 
+			ModifiedTextBox.Enabled = false;
+			ModifiedTextBox.Location = new Point(367, 104);
+			ModifiedTextBox.Name = "ModifiedTextBox";
+			ModifiedTextBox.Size = new Size(185, 27);
+			ModifiedTextBox.TabIndex = 15;
+			// 
+			// CreatedTextBox
+			// 
+			CreatedTextBox.Location = new Point(90, 104);
+			CreatedTextBox.Name = "CreatedTextBox";
+			CreatedTextBox.Size = new Size(169, 27);
+			CreatedTextBox.TabIndex = 14;
+			// 
+			// ContentTextBox
+			// 
+			ContentTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			ContentTextBox.Location = new Point(12, 142);
+			ContentTextBox.Multiline = true;
+			ContentTextBox.Name = "ContentTextBox";
+			ContentTextBox.Size = new Size(776, 501);
+			ContentTextBox.TabIndex = 13;
+			ContentTextBox.TextChanged += NoteContentTextBox_TextChanged;
+			// 
+			// ModifiedLabel
+			// 
+			ModifiedLabel.AutoSize = true;
+			ModifiedLabel.Location = new Point(288, 107);
+			ModifiedLabel.Name = "ModifiedLabel";
+			ModifiedLabel.Size = new Size(73, 20);
+			ModifiedLabel.TabIndex = 12;
+			ModifiedLabel.Text = "Modified:";
+			// 
+			// CreatedLabel
+			// 
+			CreatedLabel.AutoSize = true;
+			CreatedLabel.Location = new Point(15, 107);
+			CreatedLabel.Name = "CreatedLabel";
+			CreatedLabel.Size = new Size(64, 20);
+			CreatedLabel.TabIndex = 11;
+			CreatedLabel.Text = "Created:";
 			// 
 			// AddEditNoteForm
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(800, 690);
+			Controls.Add(ModifiedTextBox);
+			Controls.Add(CreatedTextBox);
+			Controls.Add(ContentTextBox);
+			Controls.Add(ModifiedLabel);
+			Controls.Add(CreatedLabel);
 			Controls.Add(CategoryComboBox);
 			Controls.Add(TitleTextBox);
 			Controls.Add(TitleLabel);
 			Controls.Add(CategoryLabel);
 			Controls.Add(OKButton);
 			Controls.Add(CancelButton);
-			Controls.Add(noteInfoUserControl1);
 			MinimumSize = new Size(800, 700);
 			Name = "AddEditNoteForm";
 			Text = "AddEditNoteForm";
@@ -122,13 +166,16 @@
 		}
 
 		#endregion
-
-		private NoteInfoUserControl noteInfoUserControl1;
 		private Button CancelButton;
 		private Button OKButton;
 		private Label CategoryLabel;
 		private Label TitleLabel;
 		private TextBox TitleTextBox;
 		private ComboBox CategoryComboBox;
+		private TextBox ModifiedTextBox;
+		private TextBox CreatedTextBox;
+		private TextBox ContentTextBox;
+		private Label ModifiedLabel;
+		private Label CreatedLabel;
 	}
 }

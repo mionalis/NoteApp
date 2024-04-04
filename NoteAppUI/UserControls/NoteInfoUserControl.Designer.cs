@@ -29,10 +29,10 @@
 		private void InitializeComponent()
 		{
 			CreatedLabel = new Label();
-			CreatedComboBox = new ComboBox();
-			ModifiedComboBox = new ComboBox();
 			ModifiedLabel = new Label();
 			NoteContentTextBox = new TextBox();
+			CreatedTextBox = new TextBox();
+			ModifiedTextBox = new TextBox();
 			SuspendLayout();
 			// 
 			// CreatedLabel
@@ -43,22 +43,6 @@
 			CreatedLabel.Size = new Size(64, 20);
 			CreatedLabel.TabIndex = 3;
 			CreatedLabel.Text = "Created:";
-			// 
-			// CreatedComboBox
-			// 
-			CreatedComboBox.FormattingEnabled = true;
-			CreatedComboBox.Location = new Point(81, 0);
-			CreatedComboBox.Name = "CreatedComboBox";
-			CreatedComboBox.Size = new Size(155, 28);
-			CreatedComboBox.TabIndex = 4;
-			// 
-			// ModifiedComboBox
-			// 
-			ModifiedComboBox.FormattingEnabled = true;
-			ModifiedComboBox.Location = new Point(351, 0);
-			ModifiedComboBox.Name = "ModifiedComboBox";
-			ModifiedComboBox.Size = new Size(155, 28);
-			ModifiedComboBox.TabIndex = 6;
 			// 
 			// ModifiedLabel
 			// 
@@ -78,14 +62,28 @@
 			NoteContentTextBox.Size = new Size(505, 450);
 			NoteContentTextBox.TabIndex = 7;
 			// 
+			// CreatedTextBox
+			// 
+			CreatedTextBox.Location = new Point(85, 0);
+			CreatedTextBox.Name = "CreatedTextBox";
+			CreatedTextBox.Size = new Size(125, 27);
+			CreatedTextBox.TabIndex = 8;
+			// 
+			// ModifiedTextBox
+			// 
+			ModifiedTextBox.Location = new Point(350, 0);
+			ModifiedTextBox.Name = "ModifiedTextBox";
+			ModifiedTextBox.Size = new Size(125, 27);
+			ModifiedTextBox.TabIndex = 9;
+			// 
 			// NoteInfoUserControl
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
+			Controls.Add(ModifiedTextBox);
+			Controls.Add(CreatedTextBox);
 			Controls.Add(NoteContentTextBox);
-			Controls.Add(ModifiedComboBox);
 			Controls.Add(ModifiedLabel);
-			Controls.Add(CreatedComboBox);
 			Controls.Add(CreatedLabel);
 			MinimumSize = new Size(505, 565);
 			Name = "NoteInfoUserControl";
@@ -96,9 +94,9 @@
 
 		#endregion
 		private Label CreatedLabel;
-		private ComboBox CreatedComboBox;
-		private ComboBox ModifiedComboBox;
 		private Label ModifiedLabel;
 		private TextBox NoteContentTextBox;
+		private TextBox CreatedTextBox;
+		private TextBox ModifiedTextBox;
 	}
 }

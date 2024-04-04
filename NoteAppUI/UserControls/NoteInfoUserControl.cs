@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoteApp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace NoteAppUI
 		public NoteInfoUserControl()
 		{
 			InitializeComponent();
+		}
+
+		public Note Note { get; set; }
+
+		public void UpdateNoteInfo()
+		{
+			CreatedTextBox.Text = Note.CreationTime.ToString();
+			ModifiedTextBox.Text = Note.LastModifiedTime.ToString();
 		}
 	}
 }
