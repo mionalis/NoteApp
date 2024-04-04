@@ -168,7 +168,7 @@
 			DeleteNoteButton.TabIndex = 12;
 			DeleteNoteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
 			DeleteNoteButton.UseVisualStyleBackColor = false;
-			DeleteNoteButton.Click += DeleteNoteButton_Click;
+			DeleteNoteButton.Click += RemoveNoteButton_Click;
 			// 
 			// EditNoteButton
 			// 

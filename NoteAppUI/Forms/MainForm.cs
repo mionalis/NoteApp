@@ -30,19 +30,17 @@ namespace NoteAppUI
 
 		private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var addNoteForm = new AddEditNoteForm();
-			addNoteForm.Show();
+			ShowAddNoteForm();
 		}
 
 		private void EditNoteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var editNoteForm = new AddEditNoteForm();
-			editNoteForm.Show();
+			ShowEditNoteForm();
 		}
 
 		private void DeleteNoteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			ShowRemoveNoteForm();
 		}
 
 		private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,42 +51,17 @@ namespace NoteAppUI
 
 		private void AddNoteButton_Click(object sender, EventArgs e)
 		{
-			var addNoteForm = new AddEditNoteForm();
-			var note = new Note();
-			addNoteForm.Note = note;
-			addNoteForm.UpdateNoteInfo();
-			addNoteForm.ShowDialog();
-
-			if (addNoteForm.DialogResult != DialogResult.OK)
-			{
-				return;
-			}
-			
-			Note = addNoteForm.Note;
-			NotesListbox.Items.Add(Note.Title);
-			Project.Notes.Add(Note);
+			ShowAddNoteForm();
 		}
 
 		private void EditNoteButton_Click(object sender, EventArgs e)
 		{
-			var editNoteForm = new AddEditNoteForm();
-			editNoteForm.Note = Note;
-			editNoteForm.UpdateNoteInfo();
-			editNoteForm.ShowDialog();
-
-			if (editNoteForm.DialogResult != DialogResult.OK)
-			{
-				return;
-			}
-			
-			Note = editNoteForm.Note;
-			Project.Notes[SelectedNoteIndex] = Note;
-			NotesListbox.Items[SelectedNoteIndex] = Note.Title;
+			ShowEditNoteForm();
 		}
 
-		private void DeleteNoteButton_Click(object sender, EventArgs e)
+		private void RemoveNoteButton_Click(object sender, EventArgs e)
 		{
-
+			ShowRemoveNoteForm();
 		}
 
 		private void NotesListbox_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,6 +78,68 @@ namespace NoteAppUI
 			ModifiedTextBox.Text = Project.Notes[NotesListbox.SelectedIndex].LastModifiedTime.ToString();
 			NoteCategoryLabel.Text = Project.Notes[NotesListbox.SelectedIndex].Category.ToString();
 			ContentTextBox.Text = Project.Notes[NotesListbox.SelectedIndex].Content;
+		}
+
+		private void ShowAddNoteForm()
+		{
+			var addNoteForm = new AddEditNoteForm();
+			var note = new Note();
+			addNoteForm.Note = note;
+			addNoteForm.UpdateNoteInfo();
+			addNoteForm.ShowDialog();
+
+			if (addNoteForm.DialogResult != DialogResult.OK)
+			{
+				return;
+			}
+
+			var addedNote = addNoteForm.Note;
+			NotesListbox.Items.Add(addedNote.Title);
+			Project.Notes.Add(addedNote);
+		}
+
+		private void ShowEditNoteForm()
+		{
+			if (Note == null)
+			{
+				return;
+			}
+
+			var editNoteForm = new AddEditNoteForm();
+			editNoteForm.Note = Note;
+			editNoteForm.UpdateNoteInfo();
+			editNoteForm.ShowDialog();
+
+			if (editNoteForm.DialogResult != DialogResult.OK)
+			{
+				return;
+			}
+
+			var editedNote = editNoteForm.Note;
+			Project.Notes[SelectedNoteIndex] = editedNote;
+			NotesListbox.Items[SelectedNoteIndex] = editedNote.Title;
+		}
+
+		private void ShowRemoveNoteForm()
+		{
+			var removeNoteForm = new RemoveNoteForm();
+
+			if (Note == null)
+			{
+				return;
+			}
+
+			removeNoteForm.Note = Note;
+			removeNoteForm.UpdateInfo();
+			removeNoteForm.ShowDialog();
+
+			if (removeNoteForm.DialogResult != DialogResult.OK)
+			{
+				return;
+			}
+
+			Project.Notes.Remove(Note);
+			NotesListbox.Items.RemoveAt(SelectedNoteIndex);
 		}
 	}
 }

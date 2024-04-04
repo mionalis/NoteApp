@@ -53,5 +53,10 @@ namespace NoteAppUI.Forms
 			DialogResult = DialogResult.OK;
 			Close();
 		}
+
+		private void CancelButton_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }
