@@ -110,6 +110,7 @@
 			// 
 			// CreatedTextBox
 			// 
+			CreatedTextBox.Enabled = false;
 			CreatedTextBox.Location = new Point(90, 104);
 			CreatedTextBox.Name = "CreatedTextBox";
 			CreatedTextBox.Size = new Size(169, 27);

@@ -16,7 +16,7 @@ namespace NoteAppUI.Forms
 		/// <summary>
 		/// Отредактированная заметка.
 		/// </summary>
-		private Note _editedNote = new();
+		private Note _editedNote;
 
 		public AddEditNoteForm()
 		{
@@ -34,6 +34,7 @@ namespace NoteAppUI.Forms
 		/// </summary>
 		public void UpdateNoteInfo()
 		{
+			_editedNote = Note;
 			TitleTextBox.Text = Note.Title;
 			CategoryComboBox.SelectedItem = Note.Category;
 			CreatedTextBox.Text = Note.CreationTime.ToString();
@@ -43,6 +44,11 @@ namespace NoteAppUI.Forms
 
 		private void TitleTextBox_TextChanged(object sender, EventArgs e)
 		{
+			if (_editedNote == null)
+			{
+				return;
+			}
+
 			try
 			{
 				_editedNote.Title = TitleTextBox.Text;
@@ -59,11 +65,21 @@ namespace NoteAppUI.Forms
 
 		private void NoteContentTextBox_TextChanged(object sender, EventArgs e)
 		{
+			if (_editedNote == null)
+			{
+				return;
+			}
+
 			_editedNote.Content = ContentTextBox.Text;
 		}
 
 		private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (_editedNote == null)
+			{
+				return;
+			}
+
 			_editedNote.Category = (NoteCategory)CategoryComboBox.SelectedItem;
 		}
 

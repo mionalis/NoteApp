@@ -36,7 +36,7 @@
 			// RemoveLabel
 			// 
 			RemoveLabel.AutoSize = true;
-			RemoveLabel.Location = new Point(203, 57);
+			RemoveLabel.Location = new Point(144, 55);
 			RemoveLabel.Name = "RemoveLabel";
 			RemoveLabel.Size = new Size(42, 20);
 			RemoveLabel.TabIndex = 0;
