@@ -314,6 +314,7 @@
 			MinimumSize = new Size(1000, 700);
 			Name = "MainForm";
 			Text = "NoteApp";
+			FormClosing += MainForm_FormClosing;
 			MenuStrip.ResumeLayout(false);
 			MenuStrip.PerformLayout();
 			splitContainer1.Panel1.ResumeLayout(false);

@@ -25,6 +25,12 @@ namespace NoteAppUI
 		public MainForm()
 		{
 			InitializeComponent();
+
+			_project = ProjectManager.LoadFromFile();
+			foreach(var note in _project.Notes)
+			{
+				NotesListbox.Items.Add(note.Title);
+			}
 		}
 
 		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,6 +90,11 @@ namespace NoteAppUI
 			ContentTextBox.Text = _project.Notes[NotesListbox.SelectedIndex].Content;
 		}
 
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			ProjectManager.SaveToFile(_project);
+		}
+
 		/// <summary>
 		/// Показывает форму добавления заметки. 
 		/// Если пользователь нажал кнопку ОК, то заметка добавляется в список.
@@ -104,6 +115,7 @@ namespace NoteAppUI
 			var addedNote = addNoteForm.Note;
 			NotesListbox.Items.Add(addedNote.Title);
 			_project.Notes.Add(addedNote);
+			ProjectManager.SaveToFile(_project);
 		}
 
 		/// <summary>
@@ -156,6 +168,7 @@ namespace NoteAppUI
 
 			_project.Notes.Remove(_selectedNote);
 			NotesListbox.Items.RemoveAt(_selectedNoteIndex);
+			ProjectManager.SaveToFile(_project);
 		}
 	}
 }
