@@ -1,4 +1,5 @@
 using System.Reflection.Emit;
+using System.Xml.Linq;
 
 namespace NoteApp;
 
@@ -56,13 +57,16 @@ public class Note : ICloneable
 		get => _title;
 		set
 		{
-			var maxLength = 50;
-			if (_title.Length > maxLength)
+			var maxStringLength = 50;
+
+			if (_title == ValueValidator.AssertStringOnLength(
+				value,
+				maxStringLength, 
+				nameof(Title)))
 			{
-				throw new ArgumentException(
-					$"Invalid value in Title. Maximum string length exceeded: {maxLength}.");
+				return;
 			}
-			
+
 			_title = value;
 			LastModifiedTime = DateTime.Now;
 		}

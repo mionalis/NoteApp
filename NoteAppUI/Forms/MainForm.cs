@@ -1,7 +1,9 @@
 namespace NoteAppUI
 {
+	using Newtonsoft.Json.Bson;
 	using NoteApp;
 	using NoteAppUI.Forms;
+	using System;
 	using System.Windows.Forms;
 
 	public partial class MainForm : Form
@@ -25,6 +27,7 @@ namespace NoteAppUI
 		public MainForm()
 		{
 			InitializeComponent();
+			ClearNoteInfo();
 
 			_project = ProjectManager.LoadFromFile();
 			foreach(var note in _project.Notes)
@@ -81,13 +84,14 @@ namespace NoteAppUI
 				return;
 			}
 
-			_selectedNote = _project.Notes[NotesListbox.SelectedIndex];
-			_selectedNoteIndex = NotesListbox.SelectedIndex;
-			TitleLabel.Text = _project.Notes[NotesListbox.SelectedIndex].Title;
-			CreatedTextBox.Text = _project.Notes[NotesListbox.SelectedIndex].CreationTime.ToString();
-			ModifiedTextBox.Text = _project.Notes[NotesListbox.SelectedIndex].LastModifiedTime.ToString();
-			NoteCategoryLabel.Text = _project.Notes[NotesListbox.SelectedIndex].Category.ToString();
-			ContentTextBox.Text = _project.Notes[NotesListbox.SelectedIndex].Content;
+			var index = NotesListbox.SelectedIndex;
+			_selectedNoteIndex = index;
+			_selectedNote = _project.Notes[index];
+			TitleLabel.Text = _project.Notes[index].Title;
+			CreatedTextBox.Text = _project.Notes[index].CreationTime.ToString();
+			ModifiedTextBox.Text = _project.Notes[index].LastModifiedTime.ToString();
+			NoteCategoryLabel.Text = _project.Notes[index].Category.ToString();
+			ContentTextBox.Text = _project.Notes[index].Content;
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -169,6 +173,19 @@ namespace NoteAppUI
 			_project.Notes.Remove(_selectedNote);
 			NotesListbox.Items.RemoveAt(_selectedNoteIndex);
 			ProjectManager.SaveToFile(_project);
+			ClearNoteInfo();
+		}
+
+		/// <summary>
+		/// Очищает текстовые поля с информацией о выбранной заметке.
+		/// </summary>
+		private void ClearNoteInfo()
+		{
+			TitleLabel.Text = string.Empty;
+			CreatedTextBox.Text = string.Empty;
+			ModifiedTextBox.Text = string.Empty;
+			NoteCategoryLabel.Text = string.Empty;
+			ContentTextBox.Text = string.Empty;
 		}
 	}
 }

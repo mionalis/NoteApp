@@ -13,16 +13,25 @@ namespace NoteAppUI.Forms
 {
 	public partial class AddEditNoteForm : Form
 	{
+		/// <summary>
+		/// Отредактированная заметка.
+		/// </summary>
+		private Note _editedNote = new();
+
 		public AddEditNoteForm()
 		{
 			InitializeComponent();
 			CategoryComboBox.DataSource = Enum.GetValues(typeof(NoteCategory));
 		}
 
+		/// <summary>
+		/// Возвращает и задает заметку.
+		/// </summary>
 		public Note Note { get; set; }
 
-		private Note _editedNote = new();
-
+		/// <summary>
+		/// Обновляет данные заметки.
+		/// </summary>
 		public void UpdateNoteInfo()
 		{
 			TitleTextBox.Text = Note.Title;
@@ -34,7 +43,18 @@ namespace NoteAppUI.Forms
 
 		private void TitleTextBox_TextChanged(object sender, EventArgs e)
 		{
-			_editedNote.Title = TitleTextBox.Text;
+			try
+			{
+				_editedNote.Title = TitleTextBox.Text;
+				TitleTextBox.BackColor = Color.White;
+				OKButton.Enabled = true;
+			}
+			catch (ArgumentException)
+			{
+				TitleTextBox.BackColor = Color.LightPink;
+				OKButton.Enabled = false;
+				return;
+			}
 		}
 
 		private void NoteContentTextBox_TextChanged(object sender, EventArgs e)

@@ -19,8 +19,14 @@ namespace NoteAppUI.Forms
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Возвращает и задает заметку.
+		/// </summary>
 		public Note Note { get; set; }
 
+		/// <summary>
+		/// Обновляет сообщение об удалении заметки.
+		/// </summary>
 		public void UpdateInfo()
 		{
 			RemoveLabel.Text = $"Do you really want to remove this note: {Note.Title}?";
