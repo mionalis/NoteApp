@@ -154,18 +154,20 @@ namespace NoteAppUI
 		/// </summary>
 		private void ShowRemoveNoteForm()
 		{
-			var removeNoteForm = new RemoveNoteForm();
-
 			if (_selectedNote == null)
 			{
 				return;
 			}
 
-			removeNoteForm.Note = _selectedNote;
-			removeNoteForm.UpdateInfo();
-			removeNoteForm.ShowDialog();
+			var removingNoteMessage = $"Do you really want to remove this note: {_selectedNote.Title}?";
 
-			if (removeNoteForm.DialogResult != DialogResult.OK)
+			DialogResult result = MessageBox.Show(
+				removingNoteMessage, 
+				"Removing",
+				MessageBoxButtons.OKCancel,
+				MessageBoxIcon.Information);
+
+			if (result != DialogResult.OK)
 			{
 				return;
 			}

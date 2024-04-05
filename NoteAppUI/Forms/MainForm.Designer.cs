@@ -249,10 +249,11 @@
 			// ContentTextBox
 			// 
 			ContentTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			ContentTextBox.Enabled = false;
+			ContentTextBox.BackColor = SystemColors.Window;
 			ContentTextBox.Location = new Point(3, 124);
 			ContentTextBox.Multiline = true;
 			ContentTextBox.Name = "ContentTextBox";
+			ContentTextBox.ReadOnly = true;
 			ContentTextBox.Size = new Size(505, 505);
 			ContentTextBox.TabIndex = 15;
 			// 
