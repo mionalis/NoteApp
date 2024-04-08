@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace NoteAppUnitTests
 {
-	[TestFixture]
 	public class ProjectTest
 	{
 		[Test]

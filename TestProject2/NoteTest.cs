@@ -2,7 +2,6 @@
 {
 	using NoteApp;
 	using NUnit.Framework;
-	using Assert = NUnit.Framework.Legacy.ClassicAssert;
 
 	[TestFixture]
 	public class NoteTest
@@ -15,7 +14,7 @@
 
 			note.Title = testTitle;
 
-			Assert.AreEqual(testTitle, note.Title);
+			Assert.That(note.Title, Is.EqualTo(testTitle));
 		}
 
 		[Test]
@@ -26,7 +25,7 @@
 
 			note.Content = testContent;
 
-			Assert.AreEqual(testContent, note.Content);
+			Assert.That(note.Content, Is.EqualTo(testContent));
 		}
 
 		[Test]
@@ -37,7 +36,7 @@
 
 			note.Category = testCategory;
 
-			Assert.AreEqual(testCategory, note.Category);
+			Assert.That(note.Category, Is.EqualTo(testCategory));
 		}
 
 		[Test]
@@ -48,7 +47,7 @@
 
 			note.Title = expected;
 			var actual = note.Title;
-			Assert.AreEqual(actual, expected);
+			Assert.That(expected, Is.EqualTo(actual));
 		}
 
 		[Test]
@@ -60,7 +59,7 @@
 			note.Content = expected;
 			var actual = note.Content;
 
-			Assert.AreEqual(actual, expected);
+			Assert.That(expected, Is.EqualTo(actual));
 		}
 
 		[Test]
@@ -72,7 +71,7 @@
 			note.Category = expected;
 			var actual = note.Category;
 
-			Assert.AreEqual(actual, expected);
+			Assert.That(expected, Is.EqualTo(actual));
 		}
 
 		[Test]
@@ -80,7 +79,7 @@
 		{
 			var note = new Note();
 
-			Assert.AreEqual(DateTime.Now.Date, note.LastModifiedTime.Date);
+			Assert.That(note.LastModifiedTime.Date, Is.EqualTo(DateTime.Now.Date));
 		}
 
 		[Test]
@@ -88,7 +87,7 @@
 		{
 			var note = new Note();
 
-			Assert.AreEqual(DateTime.Now.Date, note.CreationTime.Date);
+			Assert.That(note.CreationTime.Date, Is.EqualTo(DateTime.Now.Date));
 		}
 
 		[Test]
@@ -110,8 +109,12 @@
 
 			Note originalNote = new Note(originalTitle, originalContent, originalCategory);
 			Note clonedNote = (Note)originalNote.Clone();
-
-			Assert.AreEqual(originalNote, clonedNote);
+			Assert.Multiple(() =>
+			{
+				Assert.That(clonedNote.Title, Is.EqualTo(originalNote.Title));
+				Assert.That(clonedNote.Content, Is.EqualTo(originalNote.Content));
+				Assert.That(clonedNote.Category, Is.EqualTo(originalNote.Category));
+			});
 		}
 	}
 }

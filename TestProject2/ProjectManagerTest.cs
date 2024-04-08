@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assert = NUnit.Framework.Legacy.ClassicAssert;
 
 namespace NoteAppUnitTests
 {
+	[TestFixture]
 	public class ProjectManagerTest
 	{
-		private const string TestFilePath = "testfile.json";
+		private const string TestFilePath = @"C:\Users\User\Documents\NoteApp.notes";
 
 		[Test]
 		public void SaveToFile_SavesProjectToFile()
@@ -22,7 +22,7 @@ namespace NoteAppUnitTests
 
 			bool fileExists = File.Exists(TestFilePath);
 
-			Assert.IsTrue(fileExists);
+			Assert.That(fileExists, Is.True);
 		}
 
 		[Test]
@@ -34,7 +34,7 @@ namespace NoteAppUnitTests
 
 			var loadedProject = ProjectManager.LoadFromFile();
 			
-			Assert.AreEqual(project, loadedProject);
+			Assert.That(loadedProject.Notes, Is.EqualTo(project.Notes));
 		}
 
 		[Test]
@@ -47,7 +47,7 @@ namespace NoteAppUnitTests
 
 			var loadedProject = ProjectManager.LoadFromFile();
 
-			Assert.Null(loadedProject);
+			Assert.That(loadedProject, Is.Null);
 		}
 
 		[TearDown]
@@ -58,6 +58,5 @@ namespace NoteAppUnitTests
 				File.Delete(TestFilePath);
 			}
 		}
-
 	}
 }
