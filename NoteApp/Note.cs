@@ -36,7 +36,6 @@ public class Note : ICloneable
 		Category = category;
 		CreationTime = DateTime.Now;
 		LastModifiedTime = CreationTime;
-		ID = IDGenerator.GetNextID();
 	}
 
 	/// <summary>
@@ -46,7 +45,6 @@ public class Note : ICloneable
 	{
 		CreationTime = DateTime.Now;
 		LastModifiedTime = CreationTime;
-		ID = IDGenerator.GetNextID();
 	}
 
 	/// <summary>
@@ -97,11 +95,6 @@ public class Note : ICloneable
 			LastModifiedTime = DateTime.Now;
 		}
 	}
-
-	/// <summary>
-	/// Возвращает и задает ID заметки.
-	/// </summary>
-	public int ID { get; set; }
 
 	/// <summary>
 	/// Возвращает и локально задает время последнего изменения заметки. Значение меняется при
