@@ -57,6 +57,11 @@ namespace NoteAppUI
 				_project.Notes.Add(note);
 				NotesListbox.Items.Add(note.Title);
 			}
+
+			if (project.SelectedNote != null)
+			{ 
+				NotesListbox.SelectedItem = project.SelectedNote.Title; 
+			}
 		}
 
 		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,6 +115,9 @@ namespace NoteAppUI
 			var index = NotesListbox.SelectedIndex;
 			_selectedNoteIndex = index;
 			_selectedNote = _project.Notes[index];
+			_project.SelectedNote = _selectedNote;
+			ProjectManager.SaveToFile(_project, FilePath);
+
 			TitleLabel.Text = _project.Notes[index].Title;
 			CreatedTextBox.Text = _project.Notes[index].CreationTime.ToString();
 			ModifiedTextBox.Text = _project.Notes[index].LastModifiedTime.ToString();

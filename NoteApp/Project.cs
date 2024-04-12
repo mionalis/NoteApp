@@ -11,6 +11,11 @@ public class Project
 	public List<Note> Notes { get; set; } = new();
 
 	/// <summary>
+	/// Выбранная заметка в списке.
+	/// </summary>
+	public Note SelectedNote { get; set; }
+
+	/// <summary>
 	/// Возвращает список заметок, отсортированных по убыванию
 	/// по времени редактирования.
 	/// </summary>
