@@ -4,6 +4,7 @@ namespace NoteAppUI
 	using NoteApp;
 	using NoteAppUI.Forms;
 	using System;
+	using System.Diagnostics;
 	using System.Windows.Forms;
 
 	public partial class MainForm : Form
@@ -33,6 +34,15 @@ namespace NoteAppUI
 			InitializeComponent();
 			ClearNoteInfo();
 
+			CategoryComboBox.Items.Add("All");
+
+			foreach (var item in Enum.GetValues(typeof(NoteCategory)))
+			{
+				CategoryComboBox.Items.Add(item);
+			}
+
+			CategoryComboBox.SelectedIndex = 0;
+
 			var project = ProjectManager.LoadFromFile(FilePath);
 
 			if (project == null)
@@ -40,7 +50,9 @@ namespace NoteAppUI
 				return;
 			}
 
-			foreach (var note in project.Notes)
+			var sortedNotes = _project.GetSortedNotes(project.Notes);
+
+			foreach (var note in sortedNotes)
 			{
 				_project.Notes.Add(note);
 				NotesListbox.Items.Add(note.Title);
@@ -130,6 +142,8 @@ namespace NoteAppUI
 			var addedNote = addNoteForm.Note;
 			NotesListbox.Items.Add(addedNote.Title);
 			_project.Notes.Add(addedNote);
+
+			SortNotesListBox(_project);
 			ProjectManager.SaveToFile(_project, FilePath);
 		}
 
@@ -157,6 +171,8 @@ namespace NoteAppUI
 			var editedNote = editNoteForm.Note;
 			_project.Notes[_selectedNoteIndex] = editedNote;
 			NotesListbox.Items[_selectedNoteIndex] = editedNote.Title;
+
+			SortNotesListBox(_project);
 		}
 
 		/// <summary>
@@ -174,7 +190,7 @@ namespace NoteAppUI
 				$"{_selectedNote.Title}?";
 
 			DialogResult result = MessageBox.Show(
-				removingNoteMessage, 
+				removingNoteMessage,
 				"Removing",
 				MessageBoxButtons.OKCancel,
 				MessageBoxIcon.Information);
@@ -200,6 +216,44 @@ namespace NoteAppUI
 			ModifiedTextBox.Text = string.Empty;
 			NoteCategoryLabel.Text = string.Empty;
 			ContentTextBox.Text = string.Empty;
+		}
+
+		private void SortNotesListBox(Project project)
+		{
+			var sortedNotes = project.GetSortedNotes(project.Notes);
+			project.Notes = sortedNotes;
+			NotesListbox.Items.Clear();
+
+			foreach (var note in sortedNotes)
+			{
+				NotesListbox.Items.Add(note.Title);
+			}
+		}
+
+		private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var filteredNotes = new List<Note>();
+
+			if (CategoryComboBox.SelectedIndex == -1) 
+			{ 
+				return;
+			}
+			else if (CategoryComboBox.SelectedIndex == 0) 
+			{
+				filteredNotes = _project.Notes;
+			}
+			else
+			{
+				filteredNotes = _project.GetSortedNotes(
+					_project.Notes,
+					(NoteCategory)CategoryComboBox.SelectedItem);
+			}
+
+			NotesListbox.Items.Clear();
+			foreach (var note in filteredNotes)
+			{
+				NotesListbox.Items.Add(note.Title);
+			}
 		}
 	}
 }
