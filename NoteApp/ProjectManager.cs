@@ -2,35 +2,30 @@ namespace NoteApp;
 
 using Newtonsoft.Json;
 
-public class ProjectManager
-{
-    /// <summary>
-    /// Путь, по которому осуществляется сохранение и загрузка объекта класса Project.
-    /// </summary>
-    private const string FilePath = @"C:\Users\User\Documents\NoteApp.notes";
-    
+public static class ProjectManager
+{ 
     /// <summary>
     /// Сериализует список заметок в файл.
     /// </summary>
     /// <param name="project">Объект класса Project, хранящий список созданных заметок.</param>
-    public static void SaveToFile(Project project)
+    public static void SaveToFile(Project project, string filePath)
     {
         var serializedProject = JsonConvert.SerializeObject(project);
-        File.WriteAllText(FilePath, serializedProject);
+        File.WriteAllText(filePath, serializedProject);
     }
 
     /// <summary>
     /// Десериализует список заметок из файла.
     /// </summary>
     /// <returns>Объект класса Project, хранящий список созданных заметок.</returns>>
-    public static Project LoadFromFile()
+    public static Project LoadFromFile(string filePath)
     {
-        if (!File.Exists(FilePath))
+        if (!File.Exists(filePath))
         {
             return null;
         }
         
-        var jsonFileContent = File.ReadAllText(FilePath);
+        var jsonFileContent = File.ReadAllText(filePath);
         var deserializedProject = JsonConvert.DeserializeObject<Project>(jsonFileContent);
 
         return deserializedProject;

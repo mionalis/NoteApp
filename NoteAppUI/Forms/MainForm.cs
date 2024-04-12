@@ -8,7 +8,6 @@ namespace NoteAppUI
 
 	public partial class MainForm : Form
 	{
-
 		/// <summary>
 		/// Выбранная заметка.
 		/// </summary>
@@ -24,14 +23,26 @@ namespace NoteAppUI
 		/// </summary>
 		private Project _project = new();
 
+		/// <summary>
+		/// Путь, по которому осуществляется сохранение и загрузка объекта класса Project.
+		/// </summary>
+		private const string FilePath = @"C:\Users\User\Documents\NoteApp.notes";
+
 		public MainForm()
 		{
 			InitializeComponent();
 			ClearNoteInfo();
 
-			_project = ProjectManager.LoadFromFile();
-			foreach(var note in _project.Notes)
+			var project = ProjectManager.LoadFromFile(FilePath);
+
+			if (project == null)
 			{
+				return;
+			}
+
+			foreach (var note in project.Notes)
+			{
+				_project.Notes.Add(note);
 				NotesListbox.Items.Add(note.Title);
 			}
 		}
@@ -96,7 +107,7 @@ namespace NoteAppUI
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			ProjectManager.SaveToFile(_project);
+			ProjectManager.SaveToFile(_project, FilePath);
 		}
 
 		/// <summary>
@@ -119,7 +130,7 @@ namespace NoteAppUI
 			var addedNote = addNoteForm.Note;
 			NotesListbox.Items.Add(addedNote.Title);
 			_project.Notes.Add(addedNote);
-			ProjectManager.SaveToFile(_project);
+			ProjectManager.SaveToFile(_project, FilePath);
 		}
 
 		/// <summary>
@@ -159,7 +170,8 @@ namespace NoteAppUI
 				return;
 			}
 
-			var removingNoteMessage = $"Do you really want to remove this note: {_selectedNote.Title}?";
+			var removingNoteMessage = $"Do you really want to remove this note: " +
+				$"{_selectedNote.Title}?";
 
 			DialogResult result = MessageBox.Show(
 				removingNoteMessage, 
@@ -174,7 +186,7 @@ namespace NoteAppUI
 
 			_project.Notes.Remove(_selectedNote);
 			NotesListbox.Items.RemoveAt(_selectedNoteIndex);
-			ProjectManager.SaveToFile(_project);
+			ProjectManager.SaveToFile(_project, FilePath);
 			ClearNoteInfo();
 		}
 

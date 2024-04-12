@@ -12,13 +12,13 @@ namespace NoteAppUnitTests
 	[TestFixture]
 	public class ProjectManagerTest
 	{
-		private const string TestFilePath = @"C:\Users\User\Documents\NoteApp.notes";
+		private const string TestFilePath = @"C:\Users\User\Documents\TestNoteApp.notes";
 
 		[Test]
 		public void SaveToFile_SavesProjectToFile()
 		{
 			var project = new Project();
-			ProjectManager.SaveToFile(project);
+			ProjectManager.SaveToFile(project, TestFilePath);
 
 			bool fileExists = File.Exists(TestFilePath);
 
@@ -30,9 +30,9 @@ namespace NoteAppUnitTests
 		{
 			var project = new Project();
 
-			ProjectManager.SaveToFile(project);
+			ProjectManager.SaveToFile(project, TestFilePath);
 
-			var loadedProject = ProjectManager.LoadFromFile();
+			var loadedProject = ProjectManager.LoadFromFile(TestFilePath);
 			
 			Assert.That(loadedProject.Notes, Is.EqualTo(project.Notes));
 		}
@@ -45,7 +45,7 @@ namespace NoteAppUnitTests
 				File.Delete(TestFilePath);
 			}
 
-			var loadedProject = ProjectManager.LoadFromFile();
+			var loadedProject = ProjectManager.LoadFromFile(TestFilePath);
 
 			Assert.That(loadedProject, Is.Null);
 		}
