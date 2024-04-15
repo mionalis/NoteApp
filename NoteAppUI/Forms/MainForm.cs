@@ -226,16 +226,31 @@ namespace NoteAppUI
 			ContentTextBox.Text = string.Empty;
 		}
 
+		/// <summary>
+		/// —ортирует заметки в списке.
+		/// </summary>
+		/// <param name="project">Ёкземпл€р класса Project, хран€щий список заметок.</param>
 		private void SortNotesListBox(Project project)
 		{
 			var sortedNotes = project.GetSortedNotes(project.Notes);
 			project.Notes = sortedNotes;
+			UpdateListBox(sortedNotes);
+		}
+
+		/// <summary>
+		/// ќбновл€ет список заметок.
+		/// </summary>
+		/// <param name="notes">—писок заметок.</param>
+		private void UpdateListBox(List<Note> notes)
+		{
 			NotesListbox.Items.Clear();
 
-			foreach (var note in sortedNotes)
+			foreach (var note in notes)
 			{
 				NotesListbox.Items.Add(note.Title);
 			}
+
+			NotesListbox.SelectedItem = _project.SelectedNote;
 		}
 
 		private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -257,11 +272,7 @@ namespace NoteAppUI
 					(NoteCategory)CategoryComboBox.SelectedItem);
 			}
 
-			NotesListbox.Items.Clear();
-			foreach (var note in filteredNotes)
-			{
-				NotesListbox.Items.Add(note.Title);
-			}
+			UpdateListBox(filteredNotes);
 		}
 	}
 }
