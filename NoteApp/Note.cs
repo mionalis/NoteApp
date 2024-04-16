@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace NoteApp;
 
 /// <summary>
@@ -26,13 +28,35 @@ public class Note : ICloneable
 	/// <param name="title">Заголовок заметки.</param>
 	/// <param name="content">Текст заметки.</param>
 	/// <param name="category">Категория заметки.</param>
+	/// <param name="creationTime">Время создания заметки.</param>
+	/// <param name="lastModifiedTime">Время последнего изменения заметки.</param>
+	[JsonConstructor]
+	public Note(
+		string title, 
+		string content,
+		NoteCategory category,
+		DateTime creationTime, 
+		DateTime lastModifiedTime)
+	{
+		Title = title;
+		Content = content;
+		Category = category;
+		CreationTime = creationTime;
+		LastModifiedTime = lastModifiedTime;
+	}
+
+	/// <summary>
+	/// Создаёт экземпляр класса <see cref="Note"/>.
+	/// </summary>
+	/// <param name="title">Заголовок заметки.</param>
+	/// <param name="content">Текст заметки.</param>
+	/// <param name="category">Категория заметки.</param>
 	public Note(string title, string content, NoteCategory category)
 	{
 		Title = title;
 		Content = content;
 		Category = category;
-		CreationTime = DateTime.Now;
-		LastModifiedTime = CreationTime;
+		LastModifiedTime = DateTime.Now;
 	}
 
 	/// <summary>
@@ -102,7 +126,7 @@ public class Note : ICloneable
 	/// <summary>
 	/// Возвращает время создания заметки.
 	/// </summary>
-	public DateTime CreationTime { get; }
+	public DateTime CreationTime { get; } = DateTime.Now;
 
 	/// <summary>
 	/// Реализует интерфейс ICloneable.
