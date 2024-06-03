@@ -2,6 +2,9 @@ namespace NoteApp;
 
 using Newtonsoft.Json;
 
+/// <summary>
+/// Выполняет сериализацию и десериализацию данных.
+/// </summary>
 public static class ProjectManager
 { 
     /// <summary>
